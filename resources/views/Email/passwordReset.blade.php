@@ -1,5 +1,5 @@
 @component('mail::message')
-# Introduction
+# Mail para el reestablecimiento de su contraseña
 
 Presionar en el enlace para Reestablecer contraseña y crear una nueva
 
@@ -7,6 +7,6 @@ Presionar en el enlace para Reestablecer contraseña y crear una nueva
 Presione aquí
 @endcomponent
 
-Thanks,<br>
+Gracias!,<br>
 {{ config('app.name') }}
 @endcomponent
