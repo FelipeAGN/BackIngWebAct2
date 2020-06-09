@@ -26,7 +26,7 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
 
         if (!$token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Email or Password doesnt exist'], 401);
+            return response()->json(['error' => 'Email or o contraseña no son correctos'], 401);
         }
 
         return $this->respondWithToken($token);
@@ -35,6 +35,8 @@ class AuthController extends Controller
     public function signup(SignUpRequest $request){
         //we create an user
         User::create($request->all());
+        //User::create($request->all());
+
 
         //login the new user
         return $this->login();
@@ -85,7 +87,7 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth('api')->factory()->getTTL() * 60,
-            'user' => auth()->user()->getAuthIdentifierName()
+            'user' => auth()->user()->name
         ]);
     }
 }
